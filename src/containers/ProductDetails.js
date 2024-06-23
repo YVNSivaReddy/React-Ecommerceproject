@@ -8,8 +8,8 @@ import {
 } from "../redux/actions/productsActions";
 const ProductDetails = () => {
   const { productId } = useParams();
-  let product = useSelector((state) => state.product);
-  const { image, title, price, category, description } = product;
+  let selectProduct = useSelector((state) => state.selectProduct);
+  const { image, title, price, category, description } = selectProduct;
   const dispatch = useDispatch();
   const fetchProductDetail = async (id) => {
     const response = await axios
@@ -28,7 +28,7 @@ const ProductDetails = () => {
   }, [productId]);
   return (
     <div className="ui grid container">
-      {Object.keys(product).length === 0 ? (
+      {Object.keys(selectProduct).length === 0 ? (
         <div>...Loading</div>
       ) : (
         <div className="ui placeholder segment">
